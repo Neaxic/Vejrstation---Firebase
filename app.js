@@ -15,7 +15,7 @@ firebase.analytics();
 var firestore = firebase.firestore();
 
 const docRef = firestore.doc("samples/sandwichData");
-
+//Hej fra andreas
 const outputHeader = document.querySelector("#hotdogOutPut");
 const inputTextField = document.querySelector("#latestHotdogStatus");
 const saveButton = document.querySelector("#saveButton");
