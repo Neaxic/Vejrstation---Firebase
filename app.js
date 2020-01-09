@@ -8,31 +8,31 @@ var firebaseConfig = {
     messagingSenderId: "971429438367",
     appId: "1:971429438367:web:0926339c84d3c822d813aa",
     measurementId: "G-LCE07VJ9MC"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  var firestore = firebase.firestore();
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var firestore = firebase.firestore();
 
-  const docRef = firestore.doc("samples/sandwichData");
+const docRef = firestore.doc("samples/sandwichData");
 
-  const outputHeader = document.querySelector("#hotdogOutPut");
-  const inputTextField = document.querySelector("#latestHotdogStatus");
-  const saveButton = document.querySelector("#saveButton");
-  const loadButton = document.querySelector("#loadButton");
+const outputHeader = document.querySelector("#hotdogOutPut");
+const inputTextField = document.querySelector("#latestHotdogStatus");
+const saveButton = document.querySelector("#saveButton");
+const loadButton = document.querySelector("#loadButton");
 
-  saveButton.addEventListener("click", function() {
-      const textToSave = inputTextField.value;
-      console.log("I am going to save " + textToSave + "to Firestore");
+saveButton.addEventListener("click", function () {
+    const textToSave = inputTextField.value;
+    console.log("I am going to save " + textToSave + "to Firestore");
 
-      docRef.set({
-          hotdogStatus: textToSave
-      }).then(function(){
-          console.log("Status Saved!");
-      }).catch(function (error){
-          console.log("Got an error: ", error);
-      });
-  })
+    docRef.set({
+        hotdogStatus: textToSave
+    }).then(function () {
+        console.log("Status Saved!");
+    }).catch(function (error) {
+        console.log("Got an error: ", error);
+    });
+})
 
 
 // LOAD MANUELT  
@@ -48,13 +48,13 @@ var firebaseConfig = {
 //     });
 //   })
 
-  getRealtimeUpdates = function(){
-      docRef.onSnapshot(function (doc){
-        if(doc && doc.exists){
+getRealtimeUpdates = function () {
+    docRef.onSnapshot(function (doc) {
+        if (doc && doc.exists) {
             const myData = doc.data();
             outputHeader.innerText = "Numse?: " + myData.hotdogStatus;
         }
-      })
-  }
+    })
+}
 
-  getRealtimeUpdates();
+getRealtimeUpdates();
