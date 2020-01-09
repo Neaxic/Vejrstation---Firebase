@@ -15,12 +15,11 @@ firebase.analytics();
 var firestore = firebase.firestore();
 
 const docRef = firestore.doc("samples/sandwichData");
-//Hej fra andreas
 const outputHeader = document.querySelector("#hotdogOutPut");
 const inputTextField = document.querySelector("#latestHotdogStatus");
 const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
-//Hej fra peter
+
 
 saveButton.addEventListener("click", function () {
     const textToSave = inputTextField.value;
