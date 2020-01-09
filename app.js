@@ -20,7 +20,7 @@ const outputHeader = document.querySelector("#hotdogOutPut");
 const inputTextField = document.querySelector("#latestHotdogStatus");
 const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
-//Hej fra kasper
+//Hej fra bertram
 saveButton.addEventListener("click", function () {
     const textToSave = inputTextField.value;
     console.log("I am going to save " + textToSave + "to Firestore");
