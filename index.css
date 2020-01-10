@@ -1,5 +1,3 @@
-
-
 h2 { 
     font-family: Raleway; 
     font-size: 20px; 
@@ -7,4 +5,13 @@ h2 {
     font-variant: normal; 
     font-weight: 700; 
     line-height: 15.4px; 
+}
+
+#title {
+    font-size:40px;
+}
+
+#bodyID {
+    margin-left:25px;
+
 }

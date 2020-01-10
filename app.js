@@ -26,7 +26,7 @@ saveButton.addEventListener("click", function () {
     console.log("I am going to save " + textToSave + "to Firestore");
 
     docRef.set({
-        hotdogStatus: textToSave
+        vindhastighed: textToSave
     }).then(function () {
         console.log("Status Saved!");
     }).catch(function (error) {
@@ -41,7 +41,7 @@ saveButton.addEventListener("click", function () {
 //       docRef.get().then((doc) => {
 //           if(doc && doc.exists){
 //               const myData = doc.data();
-//               outputHeader.innerText = "ddadbd: " + myData.hotdogStatus;
+//               outputHeader.innerText = "ddadbd: " + myData.vindhastighed;
 //           }
 //       }).catch(function (error){
 //         console.log("Got an error: ", error);
@@ -52,7 +52,7 @@ getRealtimeUpdates = function () {
     docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
             const myData = doc.data();
-            outputHeader.innerText = "Vindhastighed: " + myData.hotdogStatus;
+            outputHeader.innerText = "Vindhastighed: " + myData.vindhastighed;
         }
     })
 }

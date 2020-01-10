@@ -9,30 +9,39 @@
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-<!--CSS-->    
+    <!--CSS-->
     <link rel="stylesheet" href="index.css">
-<!--Raleway font-->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" /><link rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway' type='text/css' />
+    <!--Raleway font-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway' type='text/css' />
     <title>bruh</title>
 </head>
 
 
 <body>
-    
-    <input type="text" id="latestHotdogStatus">
+    <div id="bodyID">
+        <h2 id="title">VINDMÅLER</h2>
+        <div class="dataConfig">
+            <h2 id="vindhastighed">Vindhastighed: </h2>
+            <h2>Vindstød:</h2>
+            <h2>Strømhastighed:</h2>
+            <h2>Max Bølgehøjde:</h2>
+            <h2>Middel Bølgehøjde:</h2>
+        </div>
+    <input type="text" id="latestHotdogStatus" placeholder="Vindmåler tekst">
     <button id="saveButton">Save</button>
-    <button id="loadButton">Load</button>
-    <div class="dataConfig">
-        <h2 id="vindhastighed">Vindhastighed: </h2>
-        <h2>Vindstød:</h2>
-        <h2>Strømhastighed:</h2>
-        <h2>Max Bølgehøjde:</h2>
-        <h2>Middel Bølgehøjde:</h2>
+
+
+
 
     </div>
     <script src="app.js"></script>
     <script src="dataFetcher.js"></script>
 
+
+<!-- 
+***Manuel load buttom: <button id="loadButton">Load</button>
+-->
 
 </body>
 
