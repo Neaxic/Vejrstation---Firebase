@@ -15,7 +15,13 @@ firebase.analytics();
 var firestore = firebase.firestore();
 
 const docRef = firestore.doc("samples/sandwichData");
-const outputHeader = document.querySelector("#vindhastighed");
+
+const vindhastighed_header = document.querySelector("#vindhastighed");
+const vindstød_header = document.querySelector("#vindstød");
+const strømhastighed_header = document.querySelector("#strømhastighed");
+const max_bølgehøjde_header = document.querySelector("#max_bølgehøjde");
+const middel_bølgehøjde_header = document.querySelector("#middel_bølgehøjde");
+
 const inputTextField = document.querySelector("#latestHotdogStatus");
 const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
@@ -23,7 +29,7 @@ const loadButton = document.querySelector("#loadButton");
 
 saveButton.addEventListener("click", function () {
     const textToSave = inputTextField.value;
-    console.log("I am going to save " + textToSave + "to Firestore");
+    console.log("I am going to save " + textToSave + " to Firestore");
 
     docRef.set({
         vindhastighed: textToSave
@@ -41,7 +47,7 @@ saveButton.addEventListener("click", function () {
 //       docRef.get().then((doc) => {
 //           if(doc && doc.exists){
 //               const myData = doc.data();
-//               outputHeader.innerText = "ddadbd: " + myData.vindhastighed;
+//               vindhastighed_header.innerText = "ddadbd: " + myData.vindhastighed;
 //           }
 //       }).catch(function (error){
 //         console.log("Got an error: ", error);
@@ -52,7 +58,11 @@ getRealtimeUpdates = function () {
     docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
             const myData = doc.data();
-            outputHeader.innerText = "Vindhastighed: " + myData.vindhastighed;
+            vindhastighed_header.innerText = "Vindhastighed: " + myData.vindhastighed;
+            vindstød_header.innerText = "Vindstød: " + myData.vindstød;
+            strømhastighed_header.innerText = "Strømhastighed: " + myData.strømhastighed;
+            max_bølgehøjde_header.innerText = "Max bølgehøjde: " + myData.max_bølgehøjde;
+            middel_bølgehøjde_header.innerText = "Middelbølgehøjde: " + myData.middel_bølgehøjde;
         }
     })
 }
