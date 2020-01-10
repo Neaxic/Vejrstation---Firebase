@@ -15,7 +15,7 @@ firebase.analytics();
 var firestore = firebase.firestore();
 
 const docRef = firestore.doc("samples/sandwichData");
-const outputHeader = document.querySelector("#hotdogOutPut");
+const outputHeader = document.querySelector("#vindhastighed");
 const inputTextField = document.querySelector("#latestHotdogStatus");
 const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
@@ -52,7 +52,7 @@ getRealtimeUpdates = function () {
     docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
             const myData = doc.data();
-            outputHeader.innerText = "Numse?: " + myData.hotdogStatus;
+            outputHeader.innerText = "Vindhastighed: " + myData.hotdogStatus;
         }
     })
 }
