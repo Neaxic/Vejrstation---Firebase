@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Neaxic/Vejrstation---Firebase/issues"
   },
-  "homepage": "https://github.com/Neaxic/Vejrstation---Firebase#readme"
+  "homepage": "https://github.com/Neaxic/Vejrstation---Firebase#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3"
+  }
 }
