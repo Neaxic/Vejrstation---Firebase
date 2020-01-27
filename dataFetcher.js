@@ -2,34 +2,19 @@ const rp = require('request-promise');
 const $ = require('cheerio');
 const url = 'http://www.hyde.dk/hanstholm/vejrstation.asp';
 
-rp(url)
-  .then(function(html){
-    //success!
+function returnvvalue(url){
+  return rp(url)
+    .then(function(html){
+      returm {
+        stromretning2: ($('tr:nth-child(1) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavaluev', html).text())
+        };
+      })
+      .catch(function (err) {
+      console.log('Error: ', err)
+    })
+  }
 
-console.log();
-console.log();
-console.log();
-
-
-
-    
-    // console.log($("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(5) > td > p > b",html).text().trim());
-    // console.log("Stromretning: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavaluev",html).text());
-    // console.log("Stromhastighed: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-    // console.log("Luft Temperatur: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-
-    // console.log("Aktuel vindhastighed: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td.vsdatavalue", html).text());
-    // console.log("Middel vindhastighed: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-    // console.log("Vind stød: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-
-    // console.log("Aktuel vindretning: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(3) > table > tbody > tr:nth-child(2) > td.vsdatavaluev",html).text());
-    // console.log("Middel vindretning: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(2) > td.vsdatavaluev",html).text());
-    // console.log("Barometer: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td:nth-child(3) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-
-    // console.log("Max bølgehøjde: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(4) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-    // console.log("Middel bølgehøjde: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td:nth-child(4) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-    // console.log("Bølgeperiode: " + $("tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(3) > td:nth-child(4) > table > tbody > tr:nth-child(2) > td.vsdatavalue",html).text());
-
+  rp(url)
 
     let Stromretning = $('tr:nth-child(1) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavaluev', html).text();
     let Vind = $('tr:nth-child(1) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td.vsdatavalue', html).text();
@@ -63,12 +48,11 @@ console.log();
     console.log();
     console.log();
     console.log();
-
-    
-
   })
 
   .catch(function(err){
     //handle error
     console.log(err);
   });
+
+  module.exports = Maxbolge;
