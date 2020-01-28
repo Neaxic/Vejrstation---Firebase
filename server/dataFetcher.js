@@ -1,6 +1,22 @@
+/*
+Vi bruger firebase dokumentationen til at sætte uploaderen up. Her bruger vi filen "serviceAccountKey", som vores nøgle.
+
+https://firebase.google.com/docs/firestore/quickstart?authuser=0
+*/
+
+
+var admin = require('firebase-admin');
+var serviceAccount = require("./serviceAccountKey.json");
 const rp = require('request-promise');
 const $ = require('cheerio');
 const url = 'http://www.hyde.dk/hanstholm/vejrstation.asp';
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://vindprojekt-74c36.firebaseio.com"
+});
+
+
 /*
 function returnvvalue(url){
   return rp(url)
@@ -44,12 +60,44 @@ function returnvvalue(url){
     console.log("Barometer:", Barometer, "hPA");
     console.log("Bølgeperiode:", Bolgeperiode, "sek");
     console.log("---------- SLUT ----------");
+//Her laver vi objektet, hvori vi sætter vores varialber.
+    let data = {
+      _stromretning: Stromretning,
+      _vind: Vind,
+      _vindretning: Vindretning,
+      _maxbolge: Maxbolge,
+      _stromhastighed: Stromhastighed,
+      _mvindhastighed: mvindhastighed,
+      _mvindretning: mvindretning,
+      _mbolgehøjde: mBolgehøjde,
+      _temperatur: Temperatur,
+      _vindstod: Vindstod,
+      _barometer: Barometer,
+      _bolgeperiode: Bolgeperiode
+
+    };
+
+    return data;
+  }).then(function(vindData) {
+    
+//Her uploader vi vores data
+  let db = admin.firestore();
+
+// Add a new document in collection "cities" with ID 'LA'
+  // let setDoc = db.collection('vindMaaler').doc('vindData').set(vindData);
+  let setDoc = db.collection('vindMaaler').add(vindData);
+
+
   })
+    
+
 
   .catch(function(err){
     //handle error
     console.log(err);
-  });
+  })
+
+ 
 
 
- // module.exports = Maxbolge;
+  
