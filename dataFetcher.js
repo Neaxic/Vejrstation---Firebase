@@ -60,6 +60,9 @@ console.log();
     console.log("Bølgeperiode:", Bolgeperiode, "sek");
     console.log("---------- SLUT ----------");
 
+    const vindhastighed_header = document.querySelector("#vindhastighed");
+    vindhastighed_header.innerText = "Vindhastighed: " + Vind;
+
     console.log();
     console.log();
     console.log();
