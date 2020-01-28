@@ -1,11 +1,11 @@
 const rp = require('request-promise');
 const $ = require('cheerio');
 const url = 'http://www.hyde.dk/hanstholm/vejrstation.asp';
-
+/*
 function returnvvalue(url){
   return rp(url)
     .then(function(html){
-      returm {
+      return {
         stromretning2: ($('tr:nth-child(1) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavaluev', html).text())
         };
       })
@@ -13,8 +13,8 @@ function returnvvalue(url){
       console.log('Error: ', err)
     })
   }
-
-  rp(url)
+*/
+  rp(url).then(function() {
 
     let Stromretning = $('tr:nth-child(1) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavaluev', html).text();
     let Vind = $('tr:nth-child(1) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td.vsdatavalue', html).text();

@@ -26,7 +26,7 @@ const inputTextField = document.querySelector("#latestHotdogStatus");
 const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
 
-const Maxbolge = require('./dataFetcher');
+//const Maxbolge = require('./dataFetcher');
 
 
 saveButton.addEventListener("click", function () {
@@ -35,7 +35,6 @@ saveButton.addEventListener("click", function () {
 
     docRef.set({
         vindhastighed: textToSave
-        vindstød: Vindstod
     }).then(function () {
         console.log("Status Saved!");
     }).catch(function (error) {
