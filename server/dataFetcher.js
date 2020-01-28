@@ -14,7 +14,7 @@ function returnvvalue(url){
     })
   }
 */
-  rp(url).then(function() {
+  rp(url).then(function(html) {
 
     let Stromretning = $('tr:nth-child(1) > td:nth-child(1) > table > tbody > tr:nth-child(2) > td.vsdatavaluev', html).text();
     let Vind = $('tr:nth-child(1) > td:nth-child(2) > table > tbody > tr:nth-child(2) > td.vsdatavalue', html).text();
@@ -44,13 +44,6 @@ function returnvvalue(url){
     console.log("Barometer:", Barometer, "hPA");
     console.log("Bølgeperiode:", Bolgeperiode, "sek");
     console.log("---------- SLUT ----------");
-
-    const vindhastighed_header = document.querySelector("#vindhastighed");
-    vindhastighed_header.innerText = "Vindhastighed: " + Vind;
-
-    console.log();
-    console.log();
-    console.log();
   })
 
   .catch(function(err){
@@ -58,4 +51,5 @@ function returnvvalue(url){
     console.log(err);
   });
 
-  module.exports = Maxbolge;
+
+ // module.exports = Maxbolge;
