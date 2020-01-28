@@ -13,8 +13,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 var firestore = firebase.firestore();
-
-const docRef = firestore.doc("samples/sandwichData");
+const docRef = firestore.doc("vindMaaler/vindData");
 
 const vindhastighed_header = document.querySelector("#vindhastighed");
 const vindstød_header = document.querySelector("#vindstød");
@@ -60,8 +59,8 @@ getRealtimeUpdates = function () {
     docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
             const myData = doc.data();
-            vindhastighed_header.innerText = "Vindhastighed: " + myData.vindhastighed;
-            vindstød_header.innerText = "Vindstød: " + myData.vindstød;
+            vindhastighed_header.innerText = "Vindhastighed: " + myData.vind;
+            vindstød_header.innerText = "Vindstød: " + myData.temperatur;
             strømhastighed_header.innerText = "Strømhastighed: " + myData.strømhastighed;
             max_bølgehøjde_header.innerText = "Max bølgehøjde: " + myData.max_bølgehøjde;
             middel_bølgehøjde_header.innerText = "Middelbølgehøjde: " + myData.middel_bølgehøjde;

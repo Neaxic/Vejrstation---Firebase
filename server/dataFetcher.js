@@ -62,18 +62,18 @@ function returnvvalue(url){
     console.log("---------- SLUT ----------");
 //Her laver vi objektet, hvori vi sætter vores varialber.
     let data = {
-      _stromretning: Stromretning,
-      _vind: Vind,
-      _vindretning: Vindretning,
-      _maxbolge: Maxbolge,
-      _stromhastighed: Stromhastighed,
-      _mvindhastighed: mvindhastighed,
-      _mvindretning: mvindretning,
-      _mbolgehøjde: mBolgehøjde,
-      _temperatur: Temperatur,
-      _vindstod: Vindstod,
-      _barometer: Barometer,
-      _bolgeperiode: Bolgeperiode
+      stromretning: Stromretning,
+      vind: Vind,
+      maxbolge: Maxbolge,
+      vindretning: Vindretning,
+      stromhastighed: Stromhastighed,
+      mvindhastighed: mvindhastighed,
+      mvindretning: mvindretning,
+      mbolgehøjde: mBolgehøjde,
+      temperatur: Temperatur,
+      vindstod: Vindstod,
+      barometer: Barometer,
+      bolgeperiode: Bolgeperiode
 
     };
 
@@ -84,8 +84,8 @@ function returnvvalue(url){
   let db = admin.firestore();
 
 // Add a new document in collection "cities" with ID 'LA'
-  // let setDoc = db.collection('vindMaaler').doc('vindData').set(vindData);
-  let setDoc = db.collection('vindMaaler').add(vindData);
+  let setDoc = db.collection('vindMaaler').doc('vindData').set(vindData);
+  //let setDoc = db.collection('vindMaaler').add(vindData);
 
 
   })
