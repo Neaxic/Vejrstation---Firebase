@@ -4,7 +4,6 @@ Vi bruger firebase dokumentationen til at sætte uploaderen up. Her bruger vi fi
 https://firebase.google.com/docs/firestore/quickstart?authuser=0
 */
 
-
 var admin = require('firebase-admin');
 var serviceAccount = require("./serviceAccountKey.json");
 const rp = require('request-promise');
@@ -15,6 +14,13 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://vindprojekt-74c36.firebaseio.com"
 });
+
+
+var CronJob = require('cron').CronJob;
+var job = new CronJob('*/20 * * * * *',function() {
+    console.log(new Date().toISOString());
+
+
 
 
 /*
@@ -100,4 +106,5 @@ function returnvvalue(url){
  
 
 
-  
+}, null, true, 'America/Los_Angeles')
+job.start();
