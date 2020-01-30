@@ -15,6 +15,7 @@ firebase.analytics();
 var firestore = firebase.firestore();
 const docRef = firestore.doc("vindMaaler/vindData");
 
+
 const vindhastighed_header = document.querySelector("#vindhastighed");
 const vindstød_header = document.querySelector("#vindstød");
 const strømhastighed_header = document.querySelector("#strømhastighed");
@@ -27,22 +28,21 @@ const loadButton = document.querySelector("#loadButton");
 
 //const Maxbolge = require('./dataFetcher');
 
+//LOAD MANUELT 
+// saveButton.addEventListener("click", function () {
+//     const textToSave = inputTextField.value;
+//     console.log("I am going to save " + textToSave + " to Firestore");
 
-saveButton.addEventListener("click", function () {
-    const textToSave = inputTextField.value;
-    console.log("I am going to save " + textToSave + " to Firestore");
+//     docRef.set({
+//         vindhastighed: textToSave
+//     }).then(function () {
+//         console.log("Status Saved!");
+//     }).catch(function (error) {
+//         console.log("Got an error: ", error);
+//     });
+// })
 
-    docRef.set({
-        vindhastighed: textToSave
-    }).then(function () {
-        console.log("Status Saved!");
-    }).catch(function (error) {
-        console.log("Got an error: ", error);
-    });
-})
-
-
-// LOAD MANUELT  
+ 
 //   loadButton.addEventListener("click", function() {
 //       console.log("Testtetetes");
 //       docRef.get().then((doc) => {
@@ -60,10 +60,10 @@ getRealtimeUpdates = function () {
         if (doc && doc.exists) {
             const myData = doc.data();
             vindhastighed_header.innerText = "Vindhastighed: " + myData.vind;
-            vindstød_header.innerText = "Vindstød: " + myData.temperatur;
-            strømhastighed_header.innerText = "Strømhastighed: " + myData.strømhastighed;
-            max_bølgehøjde_header.innerText = "Max bølgehøjde: " + myData.max_bølgehøjde;
-            middel_bølgehøjde_header.innerText = "Middelbølgehøjde: " + myData.middel_bølgehøjde;
+            vindstød_header.innerText = "Vindstød: " + myData.vindstod;
+            strømhastighed_header.innerText = "Strømhastighed: " + myData.stromhastighed;
+            max_bølgehøjde_header.innerText = "Max bølgehøjde: " + myData.maxbolge;
+            middel_bølgehøjde_header.innerText = "Middelbølgehøjde: " + myData.mbolgehøjde;
         }
     })
 }
