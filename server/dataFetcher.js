@@ -17,7 +17,7 @@ admin.initializeApp({
 
 
 var CronJob = require('cron').CronJob;
-var job = new CronJob('*/20 * * * * *',function() {
+var job = new CronJob('*/10 * * * * *',function() {
     console.log(new Date().toISOString());
 
 
@@ -79,18 +79,18 @@ function returnvvalue(url){
       temperatur: Temperatur,
       vindstod: Vindstod,
       barometer: Barometer,
-      bolgeperiode: Bolgeperiode
-
+      bolgeperiode: Bolgeperiode,
+      date: Date.now()
     };
 
     return data;
   }).then(function(vindData) {
     
 //Her uploader vi vores data
-  let db = admin.firestore();
+let db = admin.firestore();
 
 // Add a new document in collection "cities" with ID 'LA'
-  let setDoc = db.collection('vindMaaler').doc('vindData').set(vindData);
+  let setDoc = db.collection('vindMaaler').doc(vindData.date.toString()).set(vindData);
   //let setDoc = db.collection('vindMaaler').add(vindData);
 
 
@@ -101,10 +101,16 @@ function returnvvalue(url){
   .catch(function(err){
     //handle error
     console.log(err);
+
+
+
+    
+
   })
 
- 
 
 
 }, null, true, 'America/Los_Angeles')
 job.start();
+
+

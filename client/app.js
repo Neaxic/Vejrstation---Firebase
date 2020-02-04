@@ -26,6 +26,8 @@ const inputTextField = document.querySelector("#latestHotdogStatus");
 const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
 
+
+
 //const Maxbolge = require('./dataFetcher');
 
 //LOAD MANUELT 
@@ -42,6 +44,21 @@ const loadButton = document.querySelector("#loadButton");
 //     });
 // })
 
+firestore.collection("vindMaaler").orderBy("date")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            //console.log(doc.id, " => ", doc.data());
+            const d = doc.data();
+            const logString = `${d.date},${d.vind},${d.vindstod}`
+            console.log(logString);
+
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
  
 //   loadButton.addEventListener("click", function() {
 //       console.log("Testtetetes");
@@ -69,3 +86,5 @@ getRealtimeUpdates = function () {
 }
 
 getRealtimeUpdates();
+
+
