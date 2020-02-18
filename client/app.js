@@ -17,11 +17,7 @@ firebase.analytics();
 var firestore = firebase.firestore();
 
 
-
-
-
-
-const docRef = firestore.doc("vindMaaler/");
+const docRef = firestore.doc("vindMaaler/"+Date.now().toString());
 console.log("vindMaaler/"+Date.now().toString());
 
 const vindhastighed_header = document.querySelector("#vindhastighed");
@@ -35,6 +31,14 @@ const saveButton = document.querySelector("#saveButton");
 const loadButton = document.querySelector("#loadButton");
 
 
+var temp_vindhastighed;
+var temp_vindstod;
+var temp_stromhastighed
+var temp_maxbolgelengde;
+var temp_middelbolgehojde;
+
+
+var vindhastighed_array = [0];
 
 //const Maxbolge = require('./dataFetcher');
 
@@ -59,10 +63,47 @@ firestore.collection("vindMaaler").orderBy("date")
             // doc.data() is never undefined for query doc snapshots
             //console.log(doc.id, " => ", doc.data());
             const d = doc.data();
-            const logString = `${d.date},${d.vind},${d.vindstod}`
-            console.log(logString);
+            const logString = `${d.date},${d.vind}  -   ${d.vindstod}`
+            
 
+            temp_vindhastighed =  `${d.vind}`;
+            temp_vindstod = `${d.vindstod}`;
+            temp_stromhastighed = `${d.stromhastighed}`;
+            temp_maxbolgelengde = `${d.maxbolge}`;
+            temp_middelbolgehojde = `${d.mbolgehøjde}`;
+
+            vindhastighed_array.push(temp_vindhastighed);
+            
         });
+        vindhastighed_array.splice(0, vindhastighed_array.length-10);
+        vindhastighed_header.innerText = "Vindhastighed2: " + temp_vindhastighed;
+        vindstød_header.innerText = "Vindstød: " + temp_vindstod;
+        strømhastighed_header.innerText = "Strømhastighed: " + temp_stromhastighed;
+        max_bølgehøjde_header.innerText = "Max bølgehøjde: " + temp_maxbolgelengde;
+        middel_bølgehøjde_header.innerText = "Middelbølgehøjde: " + temp_middelbolgehojde;
+        
+        console.log(vindhastighed_array);
+
+
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [1,6,7,8,9,10],
+            datasets: [
+                {
+                    label: '# of Votes',
+                    borderColor: `rgb(0,255,255,255)`,
+                    data: [parseFloat(vindhastighed_array[0]),parseFloat(vindhastighed_array[1]),parseFloat(vindhastighed_array[2]),parseFloat(vindhastighed_array[3]),parseFloat(vindhastighed_array[4]),parseFloat(vindhastighed_array[5]),parseFloat(vindhastighed_array[6]),parseFloat(vindhastighed_array[7]),parseFloat(vindhastighed_array[8]),parseFloat(vindhastighed_array[9])],
+                }
+        ]},
+        
+        
+        
+        options:{}
+        
+    });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
@@ -80,15 +121,17 @@ firestore.collection("vindMaaler").orderBy("date")
 //     });
 //   })
 
+
 getRealtimeUpdates = function () {
     docRef.onSnapshot(function (doc) {
         if (doc && doc.exists) {
             const myData = doc.data();
-            vindhastighed_header.innerText = "Vindhastighed: " + myData.vind;
+            vindhastighed_header.innerText = "Vindhastighed: " + temp_vindhastighed;
             vindstød_header.innerText = "Vindstød: " + myData.vindstod;
             strømhastighed_header.innerText = "Strømhastighed: " + myData.stromhastighed;
             max_bølgehøjde_header.innerText = "Max bølgehøjde: " + myData.maxbolge;
             middel_bølgehøjde_header.innerText = "Middelbølgehøjde: " + myData.mbolgehøjde;
+
         }
     })
 }
@@ -98,27 +141,7 @@ getRealtimeUpdates();
 
 
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-            {
-                label: '# of Votes',
-                borderColor: `rgb(0,255,255,255)`,
-                data: [1,2,1,2,1,2],
-            } ,
-            {
-                label: '# of Votes',
-                borderColor: `rgb(255,255,0,255)`,
-                data: [2,1,2,1,2,1],
-        }]},
-    
-    
-    options:{}
-    
-});
+
 
 
 
