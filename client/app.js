@@ -1,3 +1,5 @@
+
+
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyBvALJL9vDdUb51JJfLG94548kBc0mEilE",
@@ -13,8 +15,14 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 var firestore = firebase.firestore();
-const docRef = firestore.doc("vindMaaler/vindData");
 
+
+
+
+
+
+const docRef = firestore.doc("vindMaaler/");
+console.log("vindMaaler/"+Date.now().toString());
 
 const vindhastighed_header = document.querySelector("#vindhastighed");
 const vindstød_header = document.querySelector("#vindstød");
@@ -86,5 +94,31 @@ getRealtimeUpdates = function () {
 }
 
 getRealtimeUpdates();
+
+
+
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [
+            {
+                label: '# of Votes',
+                borderColor: `rgb(0,255,255,255)`,
+                data: [1,2,1,2,1,2],
+            } ,
+            {
+                label: '# of Votes',
+                borderColor: `rgb(255,255,0,255)`,
+                data: [2,1,2,1,2,1],
+        }]},
+    
+    
+    options:{}
+    
+});
+
 
 
