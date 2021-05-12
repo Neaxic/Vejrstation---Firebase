@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Neaxic/Vejrstation---Firebase#readme",
   "dependencies": {
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "cheerio": "^1.0.0-rc.3",
     "cron": "^1.8.2",
     "firebase-admin": "^8.9.2",
